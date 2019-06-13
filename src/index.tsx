@@ -3,7 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {createStore} from 'redux';
 
+const reducer = (state:boolean = false,action:any)=>{
+    switch(action.type){
+        case "SHOW" :
+            state = true;
+            break;
+        case "HIDE" :
+            state = false;
+        default:
+    }
+    return state
+}
+
+export let visibleStore = createStore(reducer);
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
